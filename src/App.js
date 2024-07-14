@@ -1,25 +1,33 @@
-import logo from './logo.svg';
-import './App.css';
+// src/App.js
 
-function App() {
+import React from "react";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+import Navbar from "./components/Navbar";
+import All from "./components/All";
+import Fullstack from "./components/FullStack";
+import Datascience from "./components/DataScience";
+import Career from "./components/Career";
+import CyberSecurity from "./components/CyberSecurity";
+import "./App.css";
+import data from "./data";
+
+const App = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <BrowserRouter>
+        <div>
+          <Navbar />
+        </div>
+        <Routes>
+          <Route path="/" element={<All data={data} />} />
+          <Route path="/fullstack" element={<Fullstack data={data} />} />
+          <Route path="/datascience" element={<Datascience data={data} />} />
+          <Route path="/cybersecurity" element={<CyberSecurity data={data} />} />
+          <Route path="/career" element={<Career data={data} />} />
+        </Routes>
+      </BrowserRouter>
     </div>
   );
-}
+};
 
 export default App;
